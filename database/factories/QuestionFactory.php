@@ -22,7 +22,7 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            $this->faker->title,
+            'content' => $this->faker->title,
         ];
     }
 }
