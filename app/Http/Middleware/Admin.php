@@ -20,7 +20,7 @@ class Admin
             return $next($request);
         }
         else{
-            return response('You must be an admin to see this.',403);
+            return response(null,403);
         }
     }
 }
