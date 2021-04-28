@@ -30,3 +30,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [QuestionCont
     ->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/answers', [AnswerController::class, 'store']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/results', [AnswerController::class, 'results'])->name('results');
