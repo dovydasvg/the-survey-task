@@ -5,7 +5,7 @@
                 <h1 class="flex justify-center font-bold">{{content}}</h1>
                 <div class="flex justify-center">
                     <label class="my-2 text-center">1<br>not at all</label>
-                <input class="m-2" type="radio" id="1" :name="question_id" value="1" @click="newValue.value = 1" @change="updateValue">
+                <input required class="m-2" type="radio" id="1" :name="question_id" value="1" @click="newValue.value = 1" @change="updateValue">
                 <input class="m-2" type="radio" id="2" :name="question_id" value="2" @click="newValue.value = 2" @change="updateValue">
                 <input class="m-2" type="radio" id="3" :name="question_id" value="3" @click="newValue.value = 3" @change="updateValue">
                 <input class="m-2" type="radio" id="4" :name="question_id" value="4" @click="newValue.value = 4" @change="updateValue">
