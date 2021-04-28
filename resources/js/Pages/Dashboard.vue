@@ -7,8 +7,9 @@
         </template>
         <form @submit.prevent="nextPage">
         <question @answered="saveAnswer" v-for="question in questions.data" :content="question.content" :question_id="question.id"></question>
+        <div v-if="questions.data == 0" class="flex justify-center">Nothing to see here.</div>
         <div class="flex justify-center">
-        <button type="submit" class="p-4 bg-gray-400 rounded font-bold" v-if="questions.current_page !== questions.last_page" >Next</button>
+        <button type="submit" class="p-4 bg-gray-400 rounded font-bold" v-if="questions.current_page !== questions.last_page && questions.data != 0" >Next</button>
         <button type="submit" class="p-4 bg-gray-400 rounded font-bold" v-if="questions.current_page === questions.last_page" >Done</button>
         </div>
         </form>
