@@ -7,7 +7,8 @@ export default {
     props: [
         'question',
         'user_rating',
-        'average_rating'
+        'average_rating',
+        'total_answers'
     ],
     mounted () {
         this.renderChart({
@@ -22,6 +23,10 @@ export default {
             ]
 
         }, {
+            title:{
+              display:true,
+              text: 'Answered by: ' + this.total_answers + ' people.'
+            },
             scales: {
                 yAxes: [{
                     ticks: {

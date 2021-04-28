@@ -6,7 +6,7 @@
         </h2>
     </template>
     <div class="grid grid-cols-1 justify-items-center">
-    <ResultGraph v-for="result in results" :id="result.question" :question="result.question" :user_rating="result.user_rating" :average_rating="result.average_rating" class="w-1/2"></ResultGraph>
+    <ResultGraph v-for="result in results" :id="result.question" :question="result.question" :user_rating="result.user_rating" :average_rating="result.average_rating" :total_answers="result.total_answers" class="w-1/2"></ResultGraph>
     </div>
 
 </app-layout>

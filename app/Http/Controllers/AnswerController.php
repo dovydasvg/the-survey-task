@@ -55,7 +55,8 @@ class AnswerController extends Controller
             [
                 'question' => $answer->question()->get()->first()->content,
                 'user_rating' => $answer->rating,
-                'average_rating' => $answer->question()->get()->first()->average()
+                'average_rating' => $answer->question()->get()->first()->average(),
+                'total_answers' => Answer::where('question_id','=', $answer->question()->first()->id)->get()->count()
             ]);
         }
 
