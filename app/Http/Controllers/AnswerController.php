@@ -18,12 +18,15 @@ class AnswerController extends Controller
 
         foreach($request->all() as $answer)
         {
+            if(!$this->validateAnswer($answer)){
+                return response('The answers were not valid, try again',422);
+            }
             //Each element has a next_page value
             $redirect_url = $answer['next_page'];
             //Check if an Answer already exists. Update if yes, create new if not.
             if(Answer::where('user_id','=',$current_user)->where('question_id','=',$answer['question_id'])->exists())
             {
-                $newAnswer = Answer::where('user_id','=',$current_user)
+                Answer::where('user_id','=',$current_user)
                     ->where('question_id','=',$answer['question_id'])
                     ->update(['rating'=>$answer['rating']]);
             }
@@ -73,6 +76,17 @@ class AnswerController extends Controller
             $user->finished_survey = true;
             $user->save();
         }
+    }
+
+    public function validateAnswer($answer)
+    {
+        if(is_int($answer['rating']))
+        {
+            if ($answer['rating'] > 0 && $answer['rating'] < 6){
+                return true;
+            }
+        }
+        return false;
     }
 
 }
