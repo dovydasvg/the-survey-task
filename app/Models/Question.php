@@ -19,6 +19,7 @@ class Question extends Model
 
     public function average()
     {
-        return Answer::where('question_id','=', $this->id)->avg('rating');
+       $this->average = Answer::where('question_id','=', $this->id)->avg('rating');
+       return $this->average;
     }
 }
