@@ -8,32 +8,32 @@ Simple Laravel Survey app.
 #### *JetStream* helped set the Auth System.
 #### Default db: mysql.
 
-###To use this survey app:
+### To use this survey app:
 
-####You'll need to have Docker installed.
+#### You'll need to have Docker installed.
 
 `Setup your .env file`<br>
 `./vendor/bin/sail up -d`<br>
 `./vendor/bin/sail artisan migrate`<br>
 
-####Or just install the app to run on your local machine.
+#### Or just install the app to run on your local machine.
 
 `composer install`<br>
 `npm install`<br>
 `Setup your .env file`<br>
 
-###To test this survey app:
+### To test this survey app:
 
 `Setup your .env file`<br>
 `./vendor/bin/sail up -d`<br>
-####Migrate and seed:
+#### Migrate and seed:
 `./vendor/bin/sail artisan migrate:refresh --seed`<br>
 
 
-###Models:
+### Models:
 
 - Users
 - Questions
 - Answers
 
-###Cheers.
+### Cheers.
