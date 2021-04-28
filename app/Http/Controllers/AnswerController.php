@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Illuminate\Http\Request;
 use App\Models\Answer;
 use Illuminate\Support\Facades\Redirect;
@@ -44,6 +45,7 @@ class AnswerController extends Controller
     public function results()
     {
         $results = [];
+
         foreach(Answer::where('user_id','=', auth()->user()->id)->get() as $answer)
         {
             array_push($results,
@@ -54,10 +56,23 @@ class AnswerController extends Controller
             ]);
         }
 
+        $this->answered_all_questions();
+
         return Inertia::render('Results',
             [
                 'results' => $results
             ]);
+    }
+
+    //Check if user answered all the questions. Update finished_survey property, if yes.
+    public function answered_all_questions(): void
+    {
+        if(Answer::where('user_id','=', auth()->user()->id)->get()->count() >= Question::all()->count())
+        {
+            $user = auth()->user();
+            $user->finished_survey = true;
+            $user->save();
+        }
     }
 
 }
