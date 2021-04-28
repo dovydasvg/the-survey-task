@@ -2,7 +2,7 @@
     <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <h1 class="flex justify-center font-bold">{{content}}</h1>
+                <h1 class="flex justify-center font-bold mx-4 my-2 text-center">{{content}}</h1>
                 <div class="flex justify-center">
                     <label class="my-2 text-center">1<br>not at all</label>
                 <input required class="m-2" type="radio" id="1" :name="question_id" value="1" @click="newValue.value = 1" @change="updateValue">
