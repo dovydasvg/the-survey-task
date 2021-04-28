@@ -5,14 +5,13 @@
                 The Survey
             </h2>
         </template>
-        <form @submit.prevent="submit">
+        <form @submit.prevent="nextPage">
         <question @answered="saveAnswer" v-for="question in questions.data" :content="question.content" :question_id="question.id"></question>
         <div class="flex justify-center">
-        <button type="button" class="p-4 bg-gray-400 rounded font-bold" v-if="questions.current_page !== questions.last_page" @click="nextPage">Next</button>
-        <button type="submit" class="p-4 bg-gray-400 rounded font-bold" v-if="questions.current_page === questions.last_page">Done</button>
+        <button type="submit" class="p-4 bg-gray-400 rounded font-bold" v-if="questions.current_page !== questions.last_page" >Next</button>
+        <button type="submit" class="p-4 bg-gray-400 rounded font-bold" v-if="questions.current_page === questions.last_page" >Done</button>
         </div>
         </form>
-        {{form}}
     </app-layout>
 </template>
 
@@ -40,24 +39,20 @@
             }
         },
         methods:{
-            submit()
-            {
-                console.log(this.form)
-            },
             saveAnswer(val)
             {
                 this.form[val.question_id] =
                     {
                         'question_id': val.question_id,
-                        'rating': val.value
+                        'rating': val.value,
+                        'next_page': (this.questions.next_page_url !== null) ? this.questions.next_page_url : '/results'
                     }
             },
-            nextPage()
+            async nextPage()
             {
-                Inertia.post('/answers', this.form)
-                window.location.href = this.questions.next_page_url
+                await Inertia.post('/answers', this.form)
+            },
 
-            }
         }
     }
 </script>
