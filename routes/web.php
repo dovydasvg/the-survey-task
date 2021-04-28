@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [QuestionCont
 Route::middleware(['auth:sanctum', 'verified'])->post('/answers', [AnswerController::class, 'store']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/results', [AnswerController::class, 'results'])->name('results');
+
+Route::middleware(['auth:sanctum', 'verified','admin'])->get('/users', [UserController::class, 'index'])->name('users');
